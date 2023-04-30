@@ -17,20 +17,20 @@
 
 #logo {
   justify-content: space-between;
-  display: block; 
+  display: block;
   align-content: center;
   position: relative;
   background-color: #abb8c3;
   border-color: #2077C7;
   border-style:ridge;
-  
+
 
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  display:inline-block; 
+  display:inline-block;
   align-items: center;
   justify-content: space-around;
 }
