@@ -4,7 +4,7 @@ export default () => html`
   <header class="logoHeader">
     <div id="logo">
       <img
-        src="capstoneprojectassetsimgmoodys-awning-flat.png"
+        src="assets/img/moodys-awning-flat.png"
         alt="Moody's Logo"
         id="resize"
         width="150px"

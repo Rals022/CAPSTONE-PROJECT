@@ -1,12 +1,12 @@
 import html from "html-literal";
-
+import coolImage from "../../assets/images/PXL_20220326_175223931.jpg";
 export default () => html`
   <section id="homeBody">
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       <div class="mySlides fade">
         <div class="numbertext">1 / 6</div>
-        <img src="whereslugo-tBaM1JuJCKA-unsplash.jpg" style="width:100%" />
+        <img src=${coolImage} style="width:100%" />
         <div class="text">Caption Text</div>
       </div>
 
@@ -54,6 +54,7 @@ export default () => html`
       <span class="dot" onclick="currentSlide(5)"></span>
       <span class="dot" onclick="currentSlide(6)"></span>
     </div>
+    <img src=${coolImage} style="width:100%" />
 
     <script src="index.js" type="module"></script>
   </section>
