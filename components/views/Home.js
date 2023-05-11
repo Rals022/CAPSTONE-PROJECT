@@ -1,24 +1,24 @@
 import html from "html-literal";
-import coolImage from "../../assets/images/PXL_20220326_175223931.jpg";
-export default () => html`
+import image1 from "../../assets/images/PXL_20220326_175223931.jpg";
+export default state => html`
   <section id="homeBody">
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       <div class="mySlides fade">
         <div class="numbertext">1 / 6</div>
-        <img src=${coolImage} style="width:100%" />
+        <img src=${image1} style="width:100%" />
         <div class="text">Caption Text</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 6</div>
-        <img src="PXL_20220326_175223931.jpg" style="width:100%" />
+        <img src=${image1} style="width:100%" />
         <div class="text">Caption Two</div>
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 6</div>
-        <img src="PXL_20220220_003940604.jpg" style="width:100%" />
+        img src=${image1} style="width:100%" />
         <div class="text">Caption Three</div>
       </div>
       <div class="mySlides fade">
@@ -54,8 +54,14 @@ export default () => html`
       <span class="dot" onclick="currentSlide(5)"></span>
       <span class="dot" onclick="currentSlide(6)"></span>
     </div>
-    <img src=${coolImage} style="width:100%" />
 
     <script src="index.js" type="module"></script>
+  </section>
+  <section>
+    <h3>
+      The weather in ${state.weather.city} is ${state.weather.description}.
+      Temperature is ${state.weather.temp}F, and it feels like
+      ${state.weather.feelsLike}F.
+    </h3>
   </section>
 `;

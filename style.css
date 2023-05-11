@@ -79,12 +79,9 @@ nav {
 
 }
 
-.menu {
-  display: none;
+.menu > ul {
+  display: contents;
   justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  text-align: center;
   flex-flow: row;
 }
 
