@@ -4,10 +4,12 @@ export default () => html`
   <nav>
     <div class="container">
       <div class="menu">
-        <a href="Home" class="active">Home</a>
-        <a href="AboutMe">About Me</a>
-        <a href="Contact">Contact</a>
-        <a href="Survey">Survey</a>
+        <ul>
+          <a href="Home" class="active">Home</a>
+          <a href="AboutMe">About Me</a>
+          <a href="Contact">Contact</a>
+          <a href="Survey">Survey</a>
+        </ul>
       </div>
       <button class="hamburger">
         <span></span>
