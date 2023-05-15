@@ -1,13 +1,14 @@
 import html from "html-literal";
+import logo from "../assets/images/moodys-awning-flat.png";
 export default () => html`
-  <header class="logoHeader">
+  <header id="logoHeader">
     <div id="logo">
       <img
-        src="assets/images/moodys-awning-flat.png"
+        src=${logo}
         alt="Moody's Logo"
         id="resize"
-        width="150px"
-        height="100px"
+        width="275px"
+        height="150px"
       />
     </div>
   </header>

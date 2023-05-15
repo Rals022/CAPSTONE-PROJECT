@@ -4,11 +4,17 @@ export default () => html`
   <nav>
     <div class="container">
       <div class="menu">
-        <ul>
-          <a href="Home" class="active">Home</a>
-          <a href="AboutMe">About Me</a>
-          <a href="Contact">Contact</a>
-          <a href="Survey">Survey</a>
+        <ul id="navLinks">
+          <li><a href="Home" id="homeLink" class="navmenuItem">Home</a></li>
+          <li>
+            <a href="AboutMe" id="aboutLink" class="navmenuItem">About Me</a>
+          </li>
+          <li>
+            <a href="Contact" id="contactLink" class="navmenuItem">Contact</a>
+          </li>
+          <li>
+            <a href="Survey" id="surveyLink" class="navmenuItem">Survey</a>
+          </li>
         </ul>
       </div>
       <button class="hamburger">
