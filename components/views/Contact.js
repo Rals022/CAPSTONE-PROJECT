@@ -4,21 +4,17 @@ export default () => html`
   <div class="parent" id="contactContainer">
     <div id="div1">
       <form id="contactMe" action="formspree">
+        <h2>Contact Us</h2>
         <label for="fname">First Name</label>
         <input
           type="text"
           id="fname"
           name="firstname"
-          placeholder="Your name.."
+          placeholder="First Name"
         />
 
         <label for="lname">Last Name</label>
-        <input
-          type="text"
-          id="lname"
-          name="lastname"
-          placeholder="Your last name.."
-        />
+        <input type="text" id="lname" name="lastname" placeholder="Last Name" />
 
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="Email" />
@@ -31,10 +27,12 @@ export default () => html`
           style="height:200px"
         ></textarea>
 
-        <input type="submit" value="Submit" />
+        <input id="button" type="submit" value="Submit" />
       </form>
     </div>
-    <div id="div2">API locator</div>
+    <div id="map">API locator</div>
+    <script>
+      function initMap
     <div id="div3"></div>
   </div>
 `;
