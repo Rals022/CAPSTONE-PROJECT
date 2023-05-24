@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+const survey = require("./routers/surveys");
 
 dotenv.config();
 
@@ -50,6 +51,8 @@ app.get("/status", (request, response) => {
   // End and return the response
   response.send(JSON.stringify({ message: "Test Passed" }));
 });
+
+app.use("/survey", survey);
 
 // Tell the Express app to start listening
 // Let the humans know I am running and listening on 4040
