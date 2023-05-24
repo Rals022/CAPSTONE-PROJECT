@@ -6,7 +6,7 @@ export default state => html`
       <!-- Full-width images with number and caption text -->
       <div class="mySlides fade">
         <div class="numbertext">1 / 6</div>
-        <img src=${image1} style="width:100%" />
+        <img src=${image1} />
         <div class="text">Caption Text</div>
       </div>
 
@@ -57,11 +57,5 @@ export default state => html`
 
     <script src="index.js" type="module"></script>
   </section>
-  <section>
-    <h3>
-      The weather in ${state.weather.city} is ${state.weather.description}.
-      Temperature is ${state.weather.temp}F, and it feels like
-      ${state.weather.feelsLike}F.
-    </h3>
-  </section>
+  <section></section>
 `;

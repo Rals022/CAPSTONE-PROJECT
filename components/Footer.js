@@ -2,6 +2,6 @@ import html from "html-literal";
 
 export default () => html`
   <footer>
-    <h1>nothing has been added yet</h1>
+    <h6>2023 Raleigh's Capstone</h6>
   </footer>
 `;
