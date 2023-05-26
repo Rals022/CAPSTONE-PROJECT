@@ -6,7 +6,7 @@ const router = Router();
 router.post("/", (request, response) => {
   const newSurvey = new Survey(request.body);
   newSurvey.save((error, record) => {
-    if (error.name && error.name === "ValidationError")
+    if (error?.name === "ValidationError")
       return response.status(400).json(error.errors);
     if (error) return response.status(500).json(error.errors);
 

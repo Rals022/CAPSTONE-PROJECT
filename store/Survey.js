@@ -1,4 +1,5 @@
 export default {
   header: "Create a Survey",
-  view: "Survey"
+  view: "Survey",
+  surveys: []
 };
