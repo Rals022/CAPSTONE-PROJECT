@@ -30,9 +30,7 @@ export default () => html`
         <input id="button" type="submit" value="Submit" />
       </form>
     </div>
-    <div id="map">
-      API locator
-    </div>
+    <div id="map"></div>
 
     <div id="div3"></div>
   </div>

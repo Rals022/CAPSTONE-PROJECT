@@ -1,7 +1,7 @@
 import { Header, Nav, Main, Footer } from "./components";
 import * as store from "./store";
 import Navigo from "navigo";
-import { capitalize, map } from "lodash";
+import { capitalize } from "lodash";
 import axios from "axios";
 
 const router = new Navigo("/");
@@ -15,7 +15,42 @@ function render(state = store.Home) {
   `;
 
   afterRender(state);
-map
+
+  if (state.view === "Survey") {
+    document.querySelector("form").addEventListener("submit", event => {
+      event.preventDefault();
+
+      const inputList = event.target.elements;
+      console.log("Input Element List", inputList);
+
+      const requestData = {
+        question1: inputList.question1.value,
+        question2: inputList.question2.value,
+        question3: inputList.question3.value,
+        question4: inputList.question4.value,
+        question5: inputList.question5.value,
+        question6: inputList.question6.value,
+        comment1: inputList.comment1.value,
+        comment2: inputList.comment2.value,
+        comment3: inputList.comment3.value,
+        comment4: inputList.comment4.value,
+        comment5: inputList.comment5.value
+      };
+      console.log("request Body", requestData);
+
+      axios
+        .post(`http://localhost:4040/survey`, requestData)
+        .then(response => {
+          // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
+          store.Survey.surveys.push(response.data);
+          router.navigate("/Survey");
+        })
+        .catch(error => {
+          console.log("It puked", error);
+        });
+    });
+  }
+
   router.updatePageLinks();
 }
 
@@ -27,16 +62,26 @@ function afterRender(state) {
 }
 
 window.onload = function() {
-  L.mapquest.key = "jlG0kYEafM8blAMSGfQfmOsXtpQohxdj";
+  L.mapquest.key = process.env.MAPQUEST_API_KEY;
 
-  const map = L.mapquest.map("map", {
-    center: [0, 0],
-    layers: L.mapquest.tilelayer("map"),
-    zoom: 5
+  var map = L.mapquest.map("map", {
+    center: [43.665980606564844, -70.46016397791472],
+    layers: L.mapquest.tileLayer("map"),
+    zoom: 12
   });
-};
 
-map.addControl(L.mapquest.control());
+  L.marker([43.665980606564844, -70.46016397791472], {
+    icon: L.mapquest.icons.marker({
+      primaryColor: "#22407F",
+      secondaryColor: "#3B5998",
+      shadow: true,
+      size: "md"
+      // symbol: 'T'
+    })
+  }).addTo(map);
+
+  map.addControl(L.mapquest.control());
+};
 
 router.hooks({
   before: (done, params) => {
@@ -55,11 +100,7 @@ router.hooks({
           .then(response => {
             // Convert Kelvin to Fahrenheit since OpenWeatherMap does provide otherwise
             // Create an object to be stored in the Home state from the response
-            store.Contact.map = {
-              center: [0, 0],
-              layers: L.mapquest.tilelayer("map"),
-              zoom: 5
-            };
+            store.Contact.map = {};
             // An alternate method would be to store the values independently
             /*
       store.Home.weather.city = response.data.name;

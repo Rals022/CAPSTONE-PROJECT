@@ -15,9 +15,8 @@
 
 #logo {
   justify-content: space-between;
-  display: block;
   align-content: center;
-  position: relative;
+  text-align: center;
   background-color: #abb8c3;
   border-color: #2077C7;
   border-style:ridge;
@@ -98,6 +97,12 @@ nav {
 
 .hamburger:hover.is-active:hover span {
   background-color: var(--dark);
+}
+
+#map {
+  height: 600px;
+  width: 600px;
+  margin-top: 5%;
 }
 
 @media (min-width: 768px) {
@@ -225,8 +230,9 @@ position: relative;
 
 label, input  {
     display: block;
+}
 
-  }
+
 
 label {
   margin-bottom: 20px;
@@ -245,6 +251,9 @@ label {
 	height: 50px;
 	width: 100px;
 	text-shadow: none;
+  text-align: center;
+  margin: auto;
+
 }
 
 .navmenuItem {
