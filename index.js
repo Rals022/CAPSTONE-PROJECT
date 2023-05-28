@@ -102,6 +102,45 @@ function afterRender(state) {
   });
 }
 
+// if (state.view === "Graph") {
+//   document.querySelector("form").addEventListener("submit", event => {
+//     event.preventDefault();
+
+//     const inputList = event.target.elements;
+//     console.log("Input Element List", inputList);
+
+//     const data = [];
+//     // Interate over the toppings input group elements
+//     for (let input of inputList.data) {
+//       // If the value of the checked attribute is true then add the value to the toppings array
+//       if (input.checked) {
+//         toppings.push(input.value);
+//       }
+//     }
+
+//     const requestData = {
+//       question1: inputList.question1.value,
+//       question2: inputList.question2.value,
+//       question3: inputList.question3.value,
+//       question4: inputList.question4.value,
+//       question5: inputList.question5.value,
+//       question5: inputList.question5.value
+//     };
+//     console.log("request Body", requestData);
+
+//     axios
+//       .post(`${process.env.SURVEY_API_URL}/graphs`, requestData)
+//       .then(response => {
+//         // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
+//         store.Graph.graphs.push(response.data);
+//         router.navigate("/Graph");
+//       })
+//       .catch(error => {
+//         console.log("It puked", error);
+//       });
+//   });
+// }
+
 window.onload = function() {
   L.mapquest.key = process.env.MAPQUEST_API_KEY;
 
