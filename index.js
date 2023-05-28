@@ -72,7 +72,7 @@ function render(state = store.Home) {
       console.log("request Body", requestData);
 
       axios
-        .post(`https://myspa-survey2023.onrender.com/survey`, requestData)
+        .post(`https://myspa-survey2023.onrender.com/Survey`, requestData)
         .then(response => {
           // Push the new survey onto the Survey state survey attribute, so it can be displayed in the survey graph and list
           store.Survey.surveys.push(response.data);
