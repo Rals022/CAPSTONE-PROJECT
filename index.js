@@ -135,45 +135,6 @@ function afterRender(state) {
   });
 }
 
-// if (state.view === "Graph") {
-//   document.querySelector("form").addEventListener("submit", event => {
-//     event.preventDefault();
-
-//     const inputList = event.target.elements;
-//     console.log("Input Element List", inputList);
-
-//     const data = [];
-//     // Interate over the toppings input group elements
-//     for (let input of inputList.data) {
-//       // If the value of the checked attribute is true then add the value to the toppings array
-//       if (input.checked) {
-//         toppings.push(input.value);
-//       }
-//     }
-
-//     const requestData = {
-//       question1: inputList.question1.value,
-//       question2: inputList.question2.value,
-//       question3: inputList.question3.value,
-//       question4: inputList.question4.value,
-//       question5: inputList.question5.value,
-//       question5: inputList.question5.value
-//     };
-//     console.log("request Body", requestData);
-
-//     axios
-//       .post(`${process.env.SURVEY_API_URL}/graphs`, requestData)
-//       .then(response => {
-//         // Push the new pizza onto the Pizza state pizzas attribute, so it can be displayed in the pizza list
-//         store.Graph.graphs.push(response.data);
-//         router.navigate("/Graph");
-//       })
-//       .catch(error => {
-//         console.log("It puked", error);
-//       });
-//   });
-// }
-
 window.onload = function() {
   L.mapquest.key = process.env.MAPQUEST_API_KEY;
 
@@ -196,50 +157,41 @@ window.onload = function() {
   map.addControl(L.mapquest.control());
 };
 
-// router.hooks({
-//   before: (done, params) => {
-//     const view =
-//       params && params.data && params.data.view
-//         ? capitalize(params.data.view)
-//         : "Contact";
-//     // Add a switch case statement to handle multiple routes
-//     switch (view) {
-//       case "Contact":
-//         axios
-//           // Get request to retrieve the current weather data using the API key and providing a city name
-//           .get(
-//             `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_QUEST_API}&center=Boston,MA&size=600,400@2x`
-//           )
-//           .then(response => {
-//             // Convert Kelvin to Fahrenheit since OpenWeatherMap does provide otherwise
-//             // Create an object to be stored in the Home state from the response
-//             store.Contact.map = {};
-//             // An alternate method would be to store the values independently
-//             /*
-//       store.Home.weather.city = response.data.name;
-//       store.Home.weather.temp = kelvinToFahrenheit(response.data.main.temp);
-//       store.Home.weather.feelsLike = kelvinToFahrenheit(response.data.main.feels_like);
-//       store.Home.weather.description = response.data.weather[0].main;
-//       */
-//             done();
-//           })
-//           .catch(err => {
-//             console.log(err);
-//             done();
-//           });
-//         break;
-//       default:
-//         done();
-//     }
-//   },
-//   already: params => {
-//     const view =
-//       params && params.data && params.data.view
-//         ? capitalize(params.data.view)
-//         : "Contact";
-//     render(store[view]);
-//   }
-// });
+router.hooks({
+  before: (done, params) => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Contact";
+    // Add a switch case statement to handle multiple routes
+    switch (view) {
+      case "Contact":
+        axios
+          // Get request to retrieve the current weather data using the API key and providing a city name
+          .get(
+            `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_QUEST_API}&center=Boston,MA&size=600,400@2x`
+          )
+          .then(response => {
+            store.Contact.map = {};
+            done();
+          })
+          .catch(err => {
+            console.log(err);
+            done();
+          });
+        break;
+      default:
+        done();
+    }
+  },
+  already: params => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Contact";
+    render(store[view]);
+  }
+});
 
 router
   .on({
