@@ -5,19 +5,11 @@ export default () => html`
     <div class="container">
       <div class="menu">
         <ul id="navLinks">
-          <li><a href="Home" id="homeLink" class="navmenuItem">Home</a></li>
-          <li>
-            <a href="AboutMe" id="aboutLink" class="navmenuItem">About Me</a>
-          </li>
-          <li>
-            <a href="Contact" id="contactLink" class="navmenuItem">Contact</a>
-          </li>
-          <li>
-            <a href="Survey" id="surveyLink" class="navmenuItem">Survey</a>
-          </li>
-          <li>
-            <a href="Graph" id="graphLink" class="navmenuItem">Graph</a>
-          </li>
+          <a href="Home" id="homeLink" class="navmenuItem">Home</a>
+          <a href="AboutMe" id="aboutLink" class="navmenuItem">About Me</a>
+          <a href="Contact" id="contactLink" class="navmenuItem">Contact</a>
+          <a href="Survey" id="surveyLink" class="navmenuItem">Survey</a>
+          <a href="Graph" id="graphLink" class="navmenuItem">Graph</a>
         </ul>
       </div>
       <button class="hamburger">

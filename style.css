@@ -203,9 +203,26 @@ nav {
 .parent {
   display:flex;
   justify-content: space-around;
+}
 
+.menu {
+  width: 100%;
+  background-color: var(--dark);
+  overflow: auto;
+  text-decoration: none;
+  justify-content: space-between;
+}
 
-  }
+.menu a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 20%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center;
+  justify-content:space-around;
+}
 
   #div1 {
 width: 400px;
@@ -261,11 +278,24 @@ label {
 
 }
 
-#frame {
-  display:inline-block;
-  width:100%;
-  float:left;
-  text-align:center;
+div.scroll-container {
+  background-color: white;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+div.scroll-container img {
+  padding: 10px;
+  width: 50%;
+  height: auto;
+  background-color: var(--primary);
+
+}
+
+#pitch {
+  text-indent: 50px;
+  padding: 10%;
 }
 
 
