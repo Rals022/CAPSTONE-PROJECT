@@ -15,6 +15,9 @@ export default () => html`
           <li>
             <a href="Survey" id="surveyLink" class="navmenuItem">Survey</a>
           </li>
+          <li>
+            <a href="Graph" id="graphLink" class="navmenuItem">Graph</a>
+          </li>
         </ul>
       </div>
       <button class="hamburger">

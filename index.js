@@ -54,6 +54,47 @@ function render(state = store.Home) {
   router.updatePageLinks();
 }
 
+router.hooks({
+  before: (done, params) => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Graph";
+    // Add a switch case statement to handle multiple routes
+    switch (view) {
+      case "Graph":
+        // New Axios get request utilizing already made environment variable
+        axios
+          .get(
+            `mongodb+srv://rals22:rjskp4135@cluster0.8jfwken.mongodb.net/Cluster0 --collection test.surveys --type JSON --out ./Survey.js`
+          )
+          .then(response => {
+            // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
+            store.Graph.graphs.push(response.data);
+            {
+              router.navigate("/Graph");
+            }
+            done();
+          })
+          .catch(error => {
+            console.log("It puked", error);
+            done();
+          });
+        break;
+      default:
+        done();
+    }
+  },
+  already: params => {
+    const view =
+      params && params.data && params.data.view
+        ? capitalize(params.data.view)
+        : "Graph";
+
+    render(store[view]);
+  }
+});
+
 function afterRender(state) {
   // add menu toggle to bars icon in nav bar
   document.querySelector(".hamburger").addEventListener("click", () => {

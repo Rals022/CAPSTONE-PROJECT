@@ -2,8 +2,6 @@ import html from "html-literal";
 
 export default () => html`
   <form id="surveyForm" method="POST" action="">
-    <h4>RO:<input type="number" id="RO" /></h4>
-    <h4>Insurance:<input type="text" id="insurancePayer">
     <h3>
       Please use 1 to 10 to grade (10 is excellent and 1 is unsatisfactory)
     </h3>
