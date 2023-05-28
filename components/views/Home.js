@@ -1,61 +1,28 @@
 import html from "html-literal";
-import image1 from "../../assets/images/PXL_20220326_175223931.jpg";
+import image1 from "../../assets/images/paintbooth.jpg";
+import image2 from "../../assets/images/front.jpg";
+import image3 from "../../assets/images/heavyduty.jpg";
+import image4 from "../../assets/images/Gorham.jpg";
 export default state => html`
-  <section id="homeBody">
-    <div class="slideshow-container">
-      <!-- Full-width images with number and caption text -->
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 6</div>
-        <img src=${image1} />
-        <div class="text">Caption Text</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 6</div>
-        <img src=${image1} style="width:100%" />
-        <div class="text">Caption Two</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 6</div>
-        img src=${image1} style="width:100%" />
-        <div class="text">Caption Three</div>
-      </div>
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 6</div>
-        <img src="whereslugo-tBaM1JuJCKA-unsplash.jpg" style="width:100%" />
-        <div class="text">Caption Text</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">5 / 6</div>
-        <img src="PXL_20220326_175223931.jpg" style="width:100%" />
-        <div class="text">Caption Two</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">6 / 6</div>
-        <img src="PXL_20220220_003940604.jpg" style="width:100%" />
-        <div class="text">Caption Three</div>
-      </div>
-
-      <!-- Next and previous buttons -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br />
-
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-      <span class="dot" onclick="currentSlide(4)"></span>
-      <span class="dot" onclick="currentSlide(5)"></span>
-      <span class="dot" onclick="currentSlide(6)"></span>
-    </div>
-
-    <script src="index.js" type="module"></script>
+  <div class="scroll-container">
+    <img src=${image2} alt="Front" />
+    <img src=${image1} alt="Paint Booth" />
+    <img src=${image3} alt="Northern Lights" />
+    <img src=${image4} alt="Mountains" />
+  </div>
+  <section>
+    <h2 id="pitch">
+      HELLO MY NAME IS RALEIGH STEVENS AND I CURRENTLY WORK AT MOODYS COLLISON
+      CENTER AS A COLLISION ESTIMATOR IN THE STATE OF MAINE. AT THE BODY SHOP WE
+      CURRENTLY RECEIVE A 30% RATE OF RETURN ON OUR PHYSICAL SURVEY FORMS THAT
+      WE GIVE OUR CUSTOMER AS TO GRADE OUR SHOPS PERFORMANCE. I CREATED A WEB
+      APPLICATION THAT IMPLEMENTED A DIGITAL SURVEY THIS WILL NOT ONLY INCREASE
+      OUT RATE OF RETURN BUT TO GIVE A BETTER INSIGHT ON HOW THE BODY SHOP IS
+      DOING BASED ON THE CSI AVG SCORES. THIS WILL ALSO SAVE OUR CO WORKERS TIME
+      BY NOT HAVING TO INPUT SURVEY DATA MANUALLY. THE OTHER BENEFIT WE WILL
+      HAVE THE DATA GET EXPORTED TO THE APPROPRIATE GRAPH THAT WE USE.
+    </h2>
   </section>
+  <script src="index.js" type="module"></script>
   <section></section>
 `;

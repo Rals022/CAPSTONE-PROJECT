@@ -8,4 +8,5 @@ export default () => html`
       src="https://charts.mongodb.com/charts-capstone-tzfbp/embed/dashboards?id=6dca244d-6bcb-4704-8e59-9c1e353bff8f&theme=light&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"
     ></iframe>
   </div>
+  <script src="index.js" type="module"></script>
 `;

@@ -52,4 +52,5 @@ export default () => html`
     <input type="text" id="comment5" />
     <input type="submit" id="surveySubmit" value="SUBMIT SURVEY!" />
   </form>
+  <script src="index.js" type="module"></script>
 `;
