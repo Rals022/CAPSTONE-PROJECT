@@ -1,47 +1,34 @@
 import html from "html-literal";
-
+import image1 from "../../assets/images/aboutmepic1.jpg";
+import image2 from "../../assets/images/aboutmepic2.jpg";
+import image3 from "../../assets/images/aboutmepic3.jpg";
+import image4 from "../../assets/images/aboutmepic4.jpg";
 export default () => html`
   <section id="">
     <div class="slideshow-container">
       <!-- Full-width images with number and caption text -->
       <div class="mySlides fade">
         <div class="numbertext">1 / 6</div>
-        <img src="whereslugo-tBaM1JuJCKA-unsplash.jpg" style="width:100%" />
-        <div class="text">Caption Text</div>
+        <img src=${image1} style="width:100%" />
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">2 / 6</div>
-        <img src="PXL_20220326_175223931.jpg" style="width:100%" />
-        <div class="text">Caption Two</div>
+        <img src=${image2} style="width:100%" />
       </div>
 
       <div class="mySlides fade">
         <div class="numbertext">3 / 6</div>
-        <img src="PXL_20220220_003940604.jpg" style="width:100%" />
-        <div class="text">Caption Three</div>
+        <img src=${image3} style="width:100%" />
       </div>
       <div class="mySlides fade">
         <div class="numbertext">4 / 6</div>
-        <img src="whereslugo-tBaM1JuJCKA-unsplash.jpg" style="width:100%" />
-        <div class="text">Caption Text</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">5 / 6</div>
-        <img src="PXL_20220326_175223931.jpg" style="width:100%" />
-        <div class="text">Caption Two</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">6 / 6</div>
-        <img src="PXL_20220220_003940604.jpg" style="width:100%" />
-        <div class="text">Caption Three</div>
+        <img src=${image4} style="width:100%" />
       </div>
 
       <!-- Next and previous buttons -->
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      <a class="prev" onclick="nextSlide(-1)">&#10094;</a>
+      <a class="next" onclick="nextSlide(1)">&#10095;</a>
     </div>
     <br />
 
