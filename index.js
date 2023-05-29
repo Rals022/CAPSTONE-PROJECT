@@ -13,42 +13,16 @@ function render(state = store.Home) {
     ${Main(state)}
     ${Footer()}
   `;
-
   afterRender(state);
 
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  router.updatePageLinks();
+}
 
-  // Next/previous controls
-  function nextSlide(n) {
-    showSlides((slideIndex += n));
-  }
-
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides((slideIndex = n));
-  }
-
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }
-
+function afterRender(state) {
+  // add menu toggle to bars icon in nav bar
+  document.querySelector(".hamburger").addEventListener("click", () => {
+    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
+  });
   if (state.view === "Survey") {
     document.querySelector("form").addEventListener("submit", event => {
       event.preventDefault();
@@ -72,20 +46,54 @@ function render(state = store.Home) {
       console.log("request Body", requestData);
 
       axios
-        .post(`https://myspa-survey2023.onrender.com/Survey`, requestData)
+        .post(`${process.env.SURVEY_API_URL}/survey`, requestData)
         .then(response => {
           // Push the new survey onto the Survey state survey attribute, so it can be displayed in the survey graph and list
           store.Survey.surveys.push(response.data);
-          router.navigate("/Survey");
+          router.navigate("/Graph");
         })
         .catch(error => {
           console.log("It puked", error);
         });
     });
   }
-
-  router.updatePageLinks();
 }
+
+// // this is for my image carousel
+// let slideIndex = 1;
+// showSlides(slideIndex);
+
+// // Next/previous controls
+// function nextSlide(n) {
+//   showSlides((slideIndex += n));
+// }
+
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   showSlides((slideIndex = n));
+// }
+
+// function showSlides(n) {
+//   let i;
+//   let slides = document.getElementsByClassName("mySlides");
+//   let dots = document.getElementsByClassName("dot");
+//   if (n > slides.length) {
+//     slideIndex = 1;
+//   }
+//   if (n < 1) {
+//     slideIndex = slides.length;
+//   }
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//     dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex - 1].style.display = "block";
+//   dots[slideIndex - 1].className += " active";
+// }
+
+// survey submission form
 
 router.hooks({
   before: (done, params) => {
@@ -98,15 +106,12 @@ router.hooks({
       case "Graph":
         // New Axios get request utilizing already made environment variable
         axios
-          .get(
-            `mongodb+srv://rals22:rjskp4135@cluster0.8jfwken.mongodb.net/Cluster0 --collection test.surveys --type JSON --out ./Survey.js`
-          )
+          .get(`${process.env.SURVEY_API_URL}/survey`)
           .then(response => {
             // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
-            store.Graph.graphs.push(response.data);
-            {
-              router.navigate("/Graph");
-            }
+            console.log("response", response);
+            store.Graph.data = response.data;
+
             done();
           })
           .catch(error => {
@@ -128,70 +133,63 @@ router.hooks({
   }
 });
 
-function afterRender(state) {
-  // add menu toggle to bars icon in nav bar
-  document.querySelector(".hamburger").addEventListener("click", () => {
-    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-  });
-}
+// window.onload = function() {
+//   L.mapquest.key = process.env.MAPQUEST_API_KEY;
 
-window.onload = function() {
-  L.mapquest.key = process.env.MAPQUEST_API_KEY;
+//   var map = L.mapquest.map("map", {
+//     center: [43.665980606564844, -70.46016397791472],
+//     layers: L.mapquest.tileLayer("map"),
+//     zoom: 12
+//   });
 
-  var map = L.mapquest.map("map", {
-    center: [43.665980606564844, -70.46016397791472],
-    layers: L.mapquest.tileLayer("map"),
-    zoom: 12
-  });
+//   L.marker([43.665980606564844, -70.46016397791472], {
+//     icon: L.mapquest.icons.marker({
+//       primaryColor: "#22407F",
+//       secondaryColor: "#3B5998",
+//       shadow: true,
+//       size: "md"
+//       // symbol: 'T'
+//     })
+//   }).addTo(map);
 
-  L.marker([43.665980606564844, -70.46016397791472], {
-    icon: L.mapquest.icons.marker({
-      primaryColor: "#22407F",
-      secondaryColor: "#3B5998",
-      shadow: true,
-      size: "md"
-      // symbol: 'T'
-    })
-  }).addTo(map);
+//   map.addControl(L.mapquest.control());
+// };
 
-  map.addControl(L.mapquest.control());
-};
-
-router.hooks({
-  before: (done, params) => {
-    const view =
-      params && params.data && params.data.view
-        ? capitalize(params.data.view)
-        : "Contact";
-    // Add a switch case statement to handle multiple routes
-    switch (view) {
-      case "Contact":
-        axios
-          // Get request to retrieve the current weather data using the API key and providing a city name
-          .get(
-            `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_QUEST_API}&center=Boston,MA&size=600,400@2x`
-          )
-          .then(response => {
-            store.Contact.map = {};
-            done();
-          })
-          .catch(err => {
-            console.log(err);
-            done();
-          });
-        break;
-      default:
-        done();
-    }
-  },
-  already: params => {
-    const view =
-      params && params.data && params.data.view
-        ? capitalize(params.data.view)
-        : "Contact";
-    render(store[view]);
-  }
-});
+// router.hooks({
+//   before: (done, params) => {
+//     const view =
+//       params && params.data && params.data.view
+//         ? capitalize(params.data.view)
+//         : "Contact";
+//     // Add a switch case statement to handle multiple routes
+//     switch (view) {
+//       case "Contact":
+//         axios
+//           // Get request to retrieve the current weather data using the API key and providing a city name
+//           .get(
+//             `https://www.mapquestapi.com/staticmap/v5/map?key=${process.env.MAP_QUEST_API}&center=Boston,MA&size=600,400@2x`
+//           )
+//           .then(response => {
+//             store.Contact.map = {};
+//             done();
+//           })
+//           .catch(err => {
+//             console.log(err);
+//             done();
+//           });
+//         break;
+//       default:
+//         done();
+//     }
+//   },
+//   already: params => {
+//     const view =
+//       params && params.data && params.data.view
+//         ? capitalize(params.data.view)
+//         : "Contact";
+//     render(store[view]);
+//   }
+// });
 
 router
   .on({

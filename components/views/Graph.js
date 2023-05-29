@@ -1,6 +1,6 @@
 import html from "html-literal";
 
-export default () => html`
+export default state => html`
   <div id="frame">
     <iframe
       id="mongodb"
@@ -19,7 +19,10 @@ export default () => html`
       <th>question5</th>
       <th>question6</th>
     </tr>
-
-    <script src="index.js" type="module"></script>
+    ${state.data
+      .map(data => {
+        return `<tr><td>${data.question1}</td><td>${data.question2}</td><td>${data.question3}</td><td>${data.question4}</td><td>${data.question5}</td><td>${data.question6}</td></tr>`;
+      })
+      .join("")}
   </table>
 `;
