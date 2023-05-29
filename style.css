@@ -12,7 +12,7 @@
 }
 
 
-
+/* logo in header */
 #logo {
   justify-content: space-between;
   align-content: center;
@@ -45,7 +45,7 @@ nav {
 }
 
 .hamburger {
-  display: block;
+  display: none;
   position: relative;
   z-index: 1;
   user-select: none;
@@ -67,6 +67,28 @@ nav {
   z-index: 1;
   transform-origin: 0 0;
   transition: 0.4s;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #0a0909;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 5px 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
 }
 
 #navLinks {
@@ -99,17 +121,38 @@ nav {
   background-color: var(--dark);
 }
 
+/* this is for my map quest api under contacts  */
 #map {
   height: 600px;
   width: 600px;
   margin-top: 5%;
 }
 
-@media (min-width: 768px) {
-  .hamburger {
+@media (max-width: 768px) {
+  .menu {
     display: none;
   }
-  .menu {
+
+  .hamburger {
+    display: block;
+  }
+
+  .dropdown-menu {
+    position: relative;
+  }
+
+  .dropdown-menu li {
+    padding: 10px 0;
+  }
+
+  .dropdown-menu a {
+    padding: 10px;
+  }
+
+  .hamburger span {
+    width: 20px;
+  }
+  input[type="checkbox"]:checked + .dropdown-menu {
     display: block;
   }
 }
@@ -304,14 +347,68 @@ div.scroll-container img {
 }
 
 #pitch {
+  display: flex;
   text-indent: 50px;
   padding: 10%;
+  align-items: center;
 }
+
+
 
 #surveyData {
-
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  max-height: 60vh;
 }
 
+.tableHeader {
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 110px;
+  background-color: var(--primary);
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light);
+}
+
+tr:hover {
+  background-color: #e6e6ee;
+}
+
+#surveyForm {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#surveySubmit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--dark);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.headerSurvey {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
 
 

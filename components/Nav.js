@@ -17,6 +17,13 @@ export default () => html`
         <span></span>
         <span></span>
       </button>
+      <ul class="dropdown-menu">
+        <li><a href="Home" class="navmenuItem">Home</a></li>
+        <li><a href="AboutMe" class="navmenuItem">About Me</a></li>
+        <li><a href="Contact" class="navmenuItem">Contact</a></li>
+        <li><a href="Survey" class="navmenuItem">Survey</a></li>
+        <li><a href="Graph" class="navmenuItem">Graph</a></li>
+      </ul>
     </div>
   </nav>
 `;
