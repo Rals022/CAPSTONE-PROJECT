@@ -3,7 +3,11 @@ import html from "html-literal";
 export default () => html`
   <div class="parent" id="contactContainer">
     <div id="div1">
-      <form id="contactMe" action="formspree">
+      <form
+        id="contactMe"
+        action="https://formspree.io/f/mwkjjyle"
+        method="POST"
+      >
         <h2>Contact Us</h2>
         <label for="fname">First Name</label>
         <input

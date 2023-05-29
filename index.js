@@ -59,7 +59,7 @@ function afterRender(state) {
   }
 }
 
-// // this is for my image carousel
+// this is for my image carousel
 // let slideIndex = 1;
 // showSlides(slideIndex);
 
