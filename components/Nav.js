@@ -12,7 +12,7 @@ export default () => html`
           <a href="Graph" id="graphLink" class="navmenuItem">Graph</a>
         </ul>
       </div>
-      <button class="hamburger">
+      <button class="dropdown-menu" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
