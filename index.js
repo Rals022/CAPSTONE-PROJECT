@@ -59,40 +59,6 @@ function afterRender(state) {
   }
 }
 
-// this is for my image carousel
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// // Next/previous controls
-// function nextSlide(n) {
-//   showSlides((slideIndex += n));
-// }
-
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides((slideIndex = n));
-// }
-
-// function showSlides(n) {
-//   let i;
-//   let slides = document.getElementsByClassName("mySlides");
-//   let dots = document.getElementsByClassName("dot");
-//   if (n > slides.length) {
-//     slideIndex = 1;
-//   }
-//   if (n < 1) {
-//     slideIndex = slides.length;
-//   }
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex - 1].style.display = "block";
-//   dots[slideIndex - 1].className += " active";
-// }
-
 // survey submission form
 
 router.hooks({
@@ -133,27 +99,28 @@ router.hooks({
   }
 });
 
-// window.onload = function() {
-//   L.mapquest.key = process.env.MAPQUEST_API_KEY;
+// mapquest api
+window.onload = function() {
+  L.mapquest.key = process.env.MAPQUEST_API_KEY;
 
-//   var map = L.mapquest.map("map", {
-//     center: [43.665980606564844, -70.46016397791472],
-//     layers: L.mapquest.tileLayer("map"),
-//     zoom: 12
-//   });
+  var map = L.mapquest.map("map", {
+    center: [43.665980606564844, -70.46016397791472],
+    layers: L.mapquest.tileLayer("map"),
+    zoom: 12
+  });
 
-//   L.marker([43.665980606564844, -70.46016397791472], {
-//     icon: L.mapquest.icons.marker({
-//       primaryColor: "#22407F",
-//       secondaryColor: "#3B5998",
-//       shadow: true,
-//       size: "md"
-//       // symbol: 'T'
-//     })
-//   }).addTo(map);
+  L.marker([43.665980606564844, -70.46016397791472], {
+    icon: L.mapquest.icons.marker({
+      primaryColor: "#22407F",
+      secondaryColor: "#3B5998",
+      shadow: true,
+      size: "md"
+      // symbol: 'T'
+    })
+  }).addTo(map);
 
-//   map.addControl(L.mapquest.control());
-// };
+  map.addControl(L.mapquest.control());
+};
 
 // router.hooks({
 //   before: (done, params) => {
