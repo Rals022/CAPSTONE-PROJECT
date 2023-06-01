@@ -56,6 +56,10 @@ nav {
   cursor: pointer;
 }
 
+.hidden-menu {
+  display: none;
+}
+
 .dropdown-menu span {
   display: block;
   width: 33px;
@@ -70,11 +74,10 @@ nav {
 }
 
 .dropdown-menu {
-  display: none;
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #0a0909;
+  background-color: var(--primary);
   list-style: none;
   padding: 0;
   margin: 0;
@@ -155,6 +158,25 @@ nav {
   input[type="checkbox"]:checked + .dropdown-menu {
     display: block;
   }
+  #surveyData {
+    width: 500px;
+  }
+  #mongodb{
+    width: 100%
+  }
+}
+
+#mongodb {
+  background: var(--dark);
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);
+  width: 100vw;
+  height: 53vh;
+}
+
+.dropdown-menu.active {
+  display: block; /* Show the dropdown menu when the "active" class is applied */
 }
 
 .slideshow-container {

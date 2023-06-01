@@ -17,7 +17,7 @@ export default () => html`
         <span></span>
         <span></span>
       </button>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu hidden-menu" id="mobileNav">
         <li><a href="Home" class="navmenuItem">Home</a></li>
         <li><a href="AboutMe" class="navmenuItem">About Me</a></li>
         <li><a href="Contact" class="navmenuItem">Contact</a></li>
