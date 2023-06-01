@@ -20,9 +20,9 @@ function render(state = store.Home) {
 
 function afterRender(state) {
   // add menu toggle to bars icon in nav bar
-  // document.querySelector(".hamburger").addEventListener("click", () => {
-  //   document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-  // });
+  document.querySelector("#hamburger").addEventListener("click", () => {
+    document.querySelector("#mobileNav").classList.toggle("hidden-menu");
+  });
   if (state.view === "Survey") {
     document.querySelector("form").addEventListener("submit", event => {
       event.preventDefault();
